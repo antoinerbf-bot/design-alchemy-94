@@ -27,6 +27,24 @@ export function getTranslation(obj: any, path: string): string {
 
 export const translations: Record<Language, any> = {
   fr: {
+    sas: {
+      diagnostic: "Diagnostic Interactif",
+      process: "Notre Méthodologie",
+      transformation: "La Transformation",
+      pricing: "Nos Formules",
+      boost: "Boostez Vos Résultats",
+      whyUs: "Pourquoi Nous",
+      back: "Retour",
+      next: "Suivant",
+      seeResult: "Voir le résultat",
+      bestChoice: "Meilleur choix",
+      choose: "Choisir",
+      discover: "Découvrir",
+      bundleHint: "La plupart de nos clients combinent plusieurs services pour un ROI optimal.",
+      seeBundles: "Voir nos Packs (-20%)",
+      month: "mois",
+      year: "an",
+    },
     nav: {
       home: "Accueil",
       solutions: "Solutions",
