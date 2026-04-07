@@ -229,6 +229,7 @@ export const translations: Record<Language, any> = {
     },
   },
   es: {
+    sas: { diagnostic: "Diagnóstico Interactivo", process: "Nuestra Metodología", transformation: "La Transformación", pricing: "Nuestros Planes", boost: "Potencia Tus Resultados", whyUs: "Por Qué Nosotros", back: "Atrás", next: "Siguiente", seeResult: "Ver resultado", bestChoice: "Mejor opción", choose: "Elegir", discover: "Descubrir", bundleHint: "La mayoría de nuestros clientes combinan varios servicios para un ROI óptimo.", seeBundles: "Ver nuestros Packs (-20%)", month: "mes", year: "año" },
     nav: {
       home: "Inicio",
       solutions: "Soluciones",
@@ -270,6 +271,7 @@ export const translations: Record<Language, any> = {
     footer: { slogan: "Innovación digital de clase mundial.", services: "Servicios", company: "Empresa", legal: "Legal", rights: "Todos los derechos reservados.", privacy: "Privacidad", terms: "Términos", mentions: "Aviso legal", locations: "Paris · New York · London · Tokyo" },
   },
   vn: {
+    sas: { diagnostic: "Chẩn Đoán Tương Tác", process: "Phương Pháp Của Chúng Tôi", transformation: "Sự Chuyển Đổi", pricing: "Bảng Giá", boost: "Tăng Cường Kết Quả", whyUs: "Tại Sao Chọn Chúng Tôi", back: "Quay lại", next: "Tiếp theo", seeResult: "Xem kết quả", bestChoice: "Lựa chọn tốt nhất", choose: "Chọn", discover: "Khám phá", bundleHint: "Hầu hết khách hàng kết hợp nhiều dịch vụ để tối ưu ROI.", seeBundles: "Xem các Gói (-20%)", month: "tháng", year: "năm" },
     nav: { home: "Trang Chủ", solutions: "Giải Pháp", bundles: "Gói Dịch Vụ", references: "Tham Khảo", about: "Về Chúng Tôi", contact: "Liên Hệ", pricing: "Bảng Giá", audit: "Audit Miễn Phí" },
     hero: {
       title: "Agency Đổi Mới",
@@ -302,6 +304,7 @@ export const translations: Record<Language, any> = {
     footer: { slogan: "Đổi mới số đẳng cấp thế giới.", services: "Dịch Vụ", company: "Công Ty", legal: "Pháp Lý", rights: "Bảo lưu mọi quyền.", privacy: "Bảo mật", terms: "Điều khoản", mentions: "Thông báo pháp lý", locations: "Paris · New York · London · Tokyo" },
   },
   ru: {
+    sas: { diagnostic: "Интерактивная Диагностика", process: "Наша Методология", transformation: "Трансформация", pricing: "Наши Тарифы", boost: "Усильте Результаты", whyUs: "Почему Мы", back: "Назад", next: "Далее", seeResult: "Показать результат", bestChoice: "Лучший выбор", choose: "Выбрать", discover: "Узнать", bundleHint: "Большинство наших клиентов комбинируют несколько услуг для оптимального ROI.", seeBundles: "Смотреть Пакеты (-20%)", month: "месяц", year: "год" },
     nav: { home: "Главная", solutions: "Решения", bundles: "Пакеты", references: "Портфолио", about: "О нас", contact: "Контакты", pricing: "Цены", audit: "Бесплатный аудит" },
     hero: {
       title: "Агентство Цифровых",
@@ -334,6 +337,7 @@ export const translations: Record<Language, any> = {
     footer: { slogan: "Цифровые инновации мирового класса.", services: "Услуги", company: "Компания", legal: "Правовая информация", rights: "Все права защищены.", privacy: "Конфиденциальность", terms: "Условия", mentions: "Юридическая информация", locations: "Paris · New York · London · Tokyo" },
   },
   ar: {
+    sas: { diagnostic: "التشخيص التفاعلي", process: "منهجيتنا", transformation: "التحول", pricing: "خططنا", boost: "عزز نتائجك", whyUs: "لماذا نحن", back: "رجوع", next: "التالي", seeResult: "عرض النتيجة", bestChoice: "الخيار الأفضل", choose: "اختيار", discover: "اكتشف", bundleHint: "يجمع معظم عملائنا بين خدمات متعددة لتحقيق أفضل عائد استثمار.", seeBundles: "عرض الباقات (-20%)", month: "شهر", year: "سنة" },
     nav: { home: "الرئيسية", solutions: "الحلول", bundles: "الباقات", references: "المراجع", about: "من نحن", contact: "اتصل بنا", pricing: "الأسعار", audit: "تدقيق مجاني" },
     hero: {
       title: "وكالة الابتكار",
