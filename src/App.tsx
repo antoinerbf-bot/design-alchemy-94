@@ -1,26 +1,45 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import Index from "./pages/Index.tsx";
-import NotFound from "./pages/NotFound.tsx";
+import { LanguageProvider } from "@/contexts/LanguageContext";
+import Layout from "@/components/layout/Layout";
+import Home from "@/pages/Home";
+import About from "@/pages/About";
+import Contact from "@/pages/Contact";
+import Pricing from "@/pages/Pricing";
+import WebDesign from "@/pages/services/WebDesign";
+import SEO from "@/pages/services/SEO";
+import Branding from "@/pages/services/Branding";
+import AIAutomation from "@/pages/services/AIAutomation";
+import GoogleMaps from "@/pages/services/GoogleMaps";
+import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </TooltipProvider>
+    <LanguageProvider>
+      <TooltipProvider>
+        <Sonner />
+        <BrowserRouter>
+          <Routes>
+            <Route element={<Layout />}>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/pricing" element={<Pricing />} />
+              <Route path="/services/web-design" element={<WebDesign />} />
+              <Route path="/services/seo" element={<SEO />} />
+              <Route path="/services/branding" element={<Branding />} />
+              <Route path="/services/ai-automation" element={<AIAutomation />} />
+              <Route path="/services/google-maps" element={<GoogleMaps />} />
+            </Route>
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </LanguageProvider>
   </QueryClientProvider>
 );
 
