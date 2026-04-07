@@ -21,7 +21,7 @@ interface UpsellSectionProps {
 }
 
 export default function UpsellSection({ title, subtitle, items, gradient }: UpsellSectionProps) {
-  const { t, language } = useLanguage();
+  const { t, price } = useLanguage();
 
   return (
     <section className="section-padding relative overflow-hidden">
@@ -56,7 +56,7 @@ export default function UpsellSection({ title, subtitle, items, gradient }: Upse
               <div className="flex items-center justify-between">
                 <div className="flex items-baseline gap-1">
                   <Plus className="h-3 w-3 text-emerald-400" />
-                  <span className="font-bold text-foreground">{displayPrice(item.price, language)}</span>
+                  <span className="font-bold text-foreground">{price(item.price)}</span>
                   {item.period && <span className="text-xs text-muted-foreground">/{item.period}</span>}
                 </div>
                 <Link

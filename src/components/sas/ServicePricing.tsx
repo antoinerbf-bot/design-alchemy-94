@@ -20,7 +20,7 @@ interface ServicePricingProps {
 }
 
 export default function ServicePricing({ title, subtitle, tiers, gradient }: ServicePricingProps) {
-  const { t, language } = useLanguage();
+  const { t, lang, price } = useLanguage();
 
   return (
     <section className="section-padding relative overflow-hidden">
@@ -67,7 +67,7 @@ export default function ServicePricing({ title, subtitle, tiers, gradient }: Ser
                 <h3 className="mb-2 text-xl font-bold text-foreground">{tier.name}</h3>
                 <div className="flex items-baseline gap-1">
                   <span className="text-4xl font-extrabold text-foreground">
-                    {displayPrice(tier.price, language)}
+                    {price(tier.price)}
                   </span>
                   {tier.period && (
                     <span className="text-sm text-muted-foreground">/{tier.period}</span>
