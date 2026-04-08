@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { ArrowRight, Globe, Zap, Shield, Sparkles, Code, Search, Palette, Bot, MapPin, TrendingUp, Users, FolderKanban, BarChart3, Layers, ChevronDown } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
