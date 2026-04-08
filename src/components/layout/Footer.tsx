@@ -14,8 +14,6 @@ export default function Footer() {
 
   const companyLinks = [
     { path: "/about", label: t("nav.about") },
-    { path: "/references", label: t("nav.references") },
-    { path: "/webcare", label: t("nav.webcare") },
     { path: "/pricing", label: t("nav.pricing") },
     { path: "/contact", label: t("nav.contact") },
   ];
