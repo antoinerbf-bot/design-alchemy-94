@@ -42,6 +42,7 @@ const App = () => (
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>
+          <ChatBot />
         </BrowserRouter>
       </TooltipProvider>
     </LanguageProvider>
