@@ -8,12 +8,14 @@ import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Contact from "@/pages/Contact";
 import Pricing from "@/pages/Pricing";
+import Portfolio from "@/pages/Portfolio";
 import WebDesign from "@/pages/services/WebDesign";
 import SEO from "@/pages/services/SEO";
 import Branding from "@/pages/services/Branding";
 import AIAutomation from "@/pages/services/AIAutomation";
 import GoogleMaps from "@/pages/services/GoogleMaps";
 import NotFound from "@/pages/NotFound";
+import WhatsAppButton from "@/components/common/WhatsAppButton";
 
 const queryClient = new QueryClient();
 
@@ -22,6 +24,7 @@ const App = () => (
     <LanguageProvider>
       <TooltipProvider>
         <Sonner />
+        <WhatsAppButton />
         <BrowserRouter>
           <Routes>
             <Route element={<Layout />}>
@@ -29,6 +32,7 @@ const App = () => (
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/pricing" element={<Pricing />} />
+              <Route path="/portfolio" element={<Portfolio />} />
               <Route path="/services/web-design" element={<WebDesign />} />
               <Route path="/services/seo" element={<SEO />} />
               <Route path="/services/branding" element={<Branding />} />

@@ -20,9 +20,17 @@ export const languageFlags: Record<Language, string> = {
 
 export const isRTL = (lang: Language) => lang === "ar";
 
-// Deep nested accessor
+// Deep nested accessor with EN fallback
 export function getTranslation(obj: any, path: string): string {
-  return path.split(".").reduce((acc, key) => acc?.[key], obj) ?? path;
+  const result = path.split(".").reduce((acc, key) => acc?.[key], obj);
+  if (result !== undefined && result !== null) return result;
+  // Fallback to EN
+  const enResult = path.split(".").reduce((acc, key) => acc?.[key], translations?.en);
+  if (enResult !== undefined && enResult !== null) return enResult;
+  // Fallback to FR
+  const frResult = path.split(".").reduce((acc, key) => acc?.[key], translations?.fr);
+  if (frResult !== undefined && frResult !== null) return frResult;
+  return path;
 }
 
 export const translations: Record<Language, any> = {
@@ -49,7 +57,7 @@ export const translations: Record<Language, any> = {
       home: "Accueil",
       solutions: "Solutions",
       bundles: "Offres",
-      references: "Références",
+      references: "Portfolio",
       about: "À propos",
       contact: "Contact",
       pricing: "Tarifs",
@@ -61,6 +69,10 @@ export const translations: Record<Language, any> = {
       subtitle: "Construire l'avenir du développement web, du SEO et des Assistants IA avec une technologie de pointe et une excellence créative.",
       cta: "Lancer mon projet",
       ctaSecondary: "Audit gratuit",
+      hook1: "Si vous n'êtes pas visible, vos clients sont chez vos concurrents.",
+      hook2: "On vous place là où ils cherchent.",
+      ctaPotential: "Voir mon potentiel",
+      ctaCreate: "Créer mon site",
     },
     services: {
       title: "Nos Solutions",
@@ -98,6 +110,7 @@ export const translations: Record<Language, any> = {
       projects: "Projets Livrés",
       countries: "Pays Couverts",
       roi: "ROI Moyen",
+      testimonialsTitle: "Ce Que Nos Clients Disent",
     },
     why: {
       title: "Pourquoi XRAGENCY",
@@ -114,6 +127,102 @@ export const translations: Record<Language, any> = {
       subtitle: "Rejoignez les entreprises qui ont choisi l'excellence digitale.",
       button: "Démarrer maintenant",
       buttonSecondary: "Planifier un appel",
+      buttonWhatsapp: "Parler à un expert",
+    },
+    story: {
+      title: "Votre Transformation Digitale",
+      subtitle: "Du problème à la domination de marché, en 4 étapes.",
+      problem: {
+        label: "❌ Le Problème",
+        title: "Vous n'êtes pas visible = vous perdez de l'argent",
+        desc: "70% de vos clients potentiels cherchent sur Google avant d'acheter. Si vous n'apparaissez pas dans les premiers résultats, ils vont chez vos concurrents. Chaque jour sans visibilité est un jour de chiffre d'affaires perdu.",
+      },
+      frustration: {
+        label: "😤 La Frustration",
+        title: "Des dépenses sans retour sur investissement",
+        desc: "Vous avez peut-être déjà investi dans un site basique, des flyers, ou des publicités Facebook sans résultat mesurable. Le sentiment de jeter de l'argent par la fenêtre est insupportable.",
+      },
+      solution: {
+        label: "💡 La Solution",
+        title: "XRAGENCY : votre partenaire de croissance digitale",
+        desc: "Nous combinons intelligence artificielle, expertise SEO et design premium pour transformer votre présence digitale en machine à clients. Pas de promesses creuses, des résultats mesurables.",
+      },
+      transformation: {
+        label: "🚀 La Transformation",
+        title: "De l'invisibilité à la domination de marché",
+        desc: "Nos clients voient en moyenne +420% de ROI en 6 mois. Top 3 Google Maps, sites qui convertissent, automatisation IA — votre business tourne 24h/24, même quand vous dormez.",
+      },
+    },
+    configurator: {
+      title: "Configurateur Intelligent",
+      subtitle: "Découvrez Votre Solution Sur Mesure",
+      step1: "Votre activité",
+      step2: "Type de site",
+      step3: "Vos objectifs",
+      artisan: "Artisan / Indépendant",
+      pme: "PME / TPE",
+      enterprise: "Grande entreprise",
+      vitrine: "Site Vitrine",
+      vitrineAdv: "Vitrine Avancé",
+      ecommerce: "E-commerce",
+      seo: "SEO — Visibilité Google",
+      maps: "Google Maps — Local",
+      ai: "IA — Automatisation",
+      social: "Réseaux Sociaux",
+      result: "Votre Solution Personnalisée",
+      resultDesc: "Offre optimisée selon votre profil",
+      recommended: "Prix recommandé — ajustable selon vos besoins",
+      bundleDiscount: "Réduction bundle",
+      total: "Total",
+      cta: "Démarrer mon projet",
+      ctaWhatsapp: "Parler à un expert",
+    },
+    testimonials: {
+      sophie: "Grâce à XRAGENCY, notre restaurant est passé de 50 à 300 réservations par mois. Le Top 1 Google Maps a changé notre vie.",
+      marc: "Notre trafic organique a explosé de 520% en 8 mois. Le ROI est incroyable, chaque euro investi en rapporte 9.",
+      aisha: "Service exceptionnel, équipe réactive 24h/24. Notre cabinet est maintenant la référence digitale dans notre secteur.",
+    },
+    portfolio: {
+      badge: "Nos Réalisations",
+      title: "Des Résultats, Pas Des Promesses",
+      subtitle: "Chaque projet est une preuve de notre expertise. Découvrez comment nous avons transformé la présence digitale de nos clients.",
+      objectiveLabel: "Objectif",
+      resultLabel: "Résultat",
+      ctaTitle: "Votre Projet Sera Le Prochain",
+      ctaSubtitle: "Rejoignez nos clients satisfaits et transformez votre business.",
+      ctaButton: "Lancer mon projet",
+      sector: {
+        restaurant: "Restauration",
+        luxury: "Luxe & Mode",
+        legal: "Cabinet Juridique",
+      },
+      case1: {
+        objective: "Devenir le restaurant le plus visible de Paris 6e sur Google Maps et doubler les réservations en ligne.",
+        result: "Top 1 Google Maps en 4 mois, 240% d'appels en plus, 180% de réservations additionnelles.",
+      },
+      case2: {
+        objective: "Multiplier le trafic organique et générer des leads B2B qualifiés sans budget publicitaire.",
+        result: "520% de trafic en 8 mois, 340% de leads qualifiés, ROI de 890% sur 12 mois.",
+      },
+      case3: {
+        objective: "Repositionner la marque sur le segment luxe digital et multiplier les ventes e-commerce.",
+        result: "Notoriété de marque +300%, conversion e-commerce +210%, revenus +450% en un an.",
+      },
+      case4: {
+        objective: "Dominer la recherche locale pour attirer de nouveaux clients sans publicité payante.",
+        result: "Visibilité Google +600%, 45 nouveaux clients/mois, Top 3 Google Maps en 5 mois.",
+      },
+      metric: {
+        calls: "Appels",
+        reservations: "Réservations",
+        traffic: "Trafic",
+        leads: "Leads",
+        brand: "Notoriété",
+        conversion: "Conversion",
+        revenue: "Revenus",
+        visibility: "Visibilité",
+        clients: "Nouveaux clients",
+      },
     },
     footer: {
       slogan: "Innovation digitale de classe mondiale.",
@@ -129,80 +238,28 @@ export const translations: Record<Language, any> = {
   },
   en: {
     sas: {
-      diagnostic: "Interactive Diagnostic",
-      process: "Our Methodology",
-      transformation: "The Transformation",
-      pricing: "Our Plans",
-      boost: "Boost Your Results",
-      whyUs: "Why Us",
-      back: "Back",
-      next: "Next",
-      seeResult: "See result",
-      bestChoice: "Best choice",
-      choose: "Choose",
-      discover: "Discover",
-      bundleHint: "Most of our clients combine multiple services for optimal ROI.",
-      seeBundles: "See our Bundles (-20%)",
-      month: "month",
-      year: "year",
+      diagnostic: "Interactive Diagnostic", process: "Our Methodology", transformation: "The Transformation", pricing: "Our Plans", boost: "Boost Your Results", whyUs: "Why Us", back: "Back", next: "Next", seeResult: "See result", bestChoice: "Best choice", choose: "Choose", discover: "Discover", bundleHint: "Most of our clients combine multiple services for optimal ROI.", seeBundles: "See our Bundles (-20%)", month: "month", year: "year",
     },
-    nav: {
-      home: "Home",
-      solutions: "Solutions",
-      bundles: "Bundles",
-      references: "References",
-      about: "About",
-      contact: "Contact",
-      pricing: "Pricing",
-      audit: "Free Audit",
-    },
+    nav: { home: "Home", solutions: "Solutions", bundles: "Bundles", references: "Portfolio", about: "About", contact: "Contact", pricing: "Pricing", audit: "Free Audit" },
     hero: {
-      title: "Digital Innovation",
-      titleHighlight: "Agency",
+      title: "Digital Innovation", titleHighlight: "Agency",
       subtitle: "Building the future of web development, SEO and AI Assistants with cutting-edge technology and creative excellence.",
-      cta: "Start my project",
-      ctaSecondary: "Free audit",
+      cta: "Start my project", ctaSecondary: "Free audit",
+      hook1: "If you're not visible, your clients are with your competitors.",
+      hook2: "We put you where they're searching.",
+      ctaPotential: "See my potential", ctaCreate: "Create my website",
     },
     services: {
-      title: "Our Solutions",
-      subtitle: "Each service is an immersive universe designed to dominate your market.",
-      webDesign: {
-        name: "Web Design",
-        tagline: "Digital Architecture",
-        description: "Premium websites that convert. From showcases to e-commerce, every pixel is optimized for performance.",
-      },
-      seo: {
-        name: "SEO Armada",
-        tagline: "Search Gravity Engine",
-        description: "Dominate Google with our AI strategy + human expertise. Sustainable organic traffic without ads.",
-      },
-      branding: {
-        name: "Branding",
-        tagline: "Identity Forge",
-        description: "Your image is worth 1000 clients. Logos, brand guidelines, visual identities that leave lasting impressions.",
-      },
-      ai: {
-        name: "AI & Automation",
-        tagline: "AI Control Room",
-        description: "Smart chatbots, process automation, custom AI assistants tailored to your business.",
-      },
-      maps: {
-        name: "Google Maps",
-        tagline: "Local Domination",
-        description: "Top 3 Google Maps Local Pack. 3x more calls, 5x more store visits.",
-      },
+      title: "Our Solutions", subtitle: "Each service is an immersive universe designed to dominate your market.",
+      webDesign: { name: "Web Design", tagline: "Digital Architecture", description: "Premium websites that convert. From showcases to e-commerce, every pixel is optimized for performance." },
+      seo: { name: "SEO Armada", tagline: "Search Gravity Engine", description: "Dominate Google with our AI strategy + human expertise. Sustainable organic traffic without ads." },
+      branding: { name: "Branding", tagline: "Identity Forge", description: "Your image is worth 1000 clients. Logos, brand guidelines, visual identities that leave lasting impressions." },
+      ai: { name: "AI & Automation", tagline: "AI Control Room", description: "Smart chatbots, process automation, custom AI assistants tailored to your business." },
+      maps: { name: "Google Maps", tagline: "Local Domination", description: "Top 3 Google Maps Local Pack. 3x more calls, 5x more store visits." },
     },
-    proof: {
-      title: "Measurable Results",
-      subtitle: "Numbers that speak for themselves.",
-      clients: "Happy Clients",
-      projects: "Delivered Projects",
-      countries: "Countries Covered",
-      roi: "Average ROI",
-    },
+    proof: { title: "Measurable Results", subtitle: "Numbers that speak for themselves.", clients: "Happy Clients", projects: "Delivered Projects", countries: "Countries Covered", roi: "Average ROI", testimonialsTitle: "What Our Clients Say" },
     why: {
-      title: "Why XRAGENCY",
-      subtitle: "What sets us apart from traditional agencies.",
+      title: "Why XRAGENCY", subtitle: "What sets us apart from traditional agencies.",
       points: [
         { title: "24/7 Responsiveness", desc: "Teams spread across 4 continents and 12 time zones." },
         { title: "AI + Human", desc: "AI generates, humans perfect. The best of both worlds." },
@@ -210,23 +267,41 @@ export const translations: Record<Language, any> = {
         { title: "Accessible Luxury", desc: "Premium quality at competitive prices thanks to AI optimization." },
       ],
     },
-    cta: {
-      title: "Ready to Dominate Your Market?",
-      subtitle: "Join the businesses that chose digital excellence.",
-      button: "Start now",
-      buttonSecondary: "Schedule a call",
+    cta: { title: "Ready to Dominate Your Market?", subtitle: "Join the businesses that chose digital excellence.", button: "Start now", buttonSecondary: "Schedule a call", buttonWhatsapp: "Talk to an expert" },
+    story: {
+      title: "Your Digital Transformation", subtitle: "From problem to market domination, in 4 steps.",
+      problem: { label: "❌ The Problem", title: "You're not visible = you're losing money", desc: "70% of your potential clients search Google before buying. If you don't appear in top results, they go to your competitors. Every day without visibility is a day of lost revenue." },
+      frustration: { label: "😤 The Frustration", title: "Spending without return on investment", desc: "You may have already invested in a basic website, flyers, or Facebook ads with no measurable results. The feeling of throwing money away is unbearable." },
+      solution: { label: "💡 The Solution", title: "XRAGENCY: your digital growth partner", desc: "We combine artificial intelligence, SEO expertise and premium design to transform your digital presence into a client-generating machine. No empty promises, measurable results." },
+      transformation: { label: "🚀 The Transformation", title: "From invisibility to market domination", desc: "Our clients see an average +420% ROI in 6 months. Top 3 Google Maps, converting websites, AI automation — your business runs 24/7, even while you sleep." },
     },
-    footer: {
-      slogan: "World-class digital innovation.",
-      services: "Services",
-      company: "Company",
-      legal: "Legal",
-      rights: "All rights reserved.",
-      privacy: "Privacy",
-      terms: "Terms",
-      mentions: "Legal notice",
-      locations: "Paris · New York · London · Tokyo",
+    configurator: {
+      title: "Smart Configurator", subtitle: "Discover Your Custom Solution",
+      step1: "Your business", step2: "Website type", step3: "Your goals",
+      artisan: "Freelancer / Artisan", pme: "SMB / SME", enterprise: "Large Enterprise",
+      vitrine: "Showcase Website", vitrineAdv: "Advanced Showcase", ecommerce: "E-commerce",
+      seo: "SEO — Google Visibility", maps: "Google Maps — Local", ai: "AI — Automation", social: "Social Media",
+      result: "Your Custom Solution", resultDesc: "Optimized offer based on your profile",
+      recommended: "Recommended price — adjustable to your needs", bundleDiscount: "Bundle discount",
+      total: "Total", cta: "Start my project", ctaWhatsapp: "Talk to an expert",
     },
+    testimonials: {
+      sophie: "Thanks to XRAGENCY, our restaurant went from 50 to 300 bookings per month. The Google Maps Top 1 changed our life.",
+      marc: "Our organic traffic exploded by 520% in 8 months. The ROI is incredible, every dollar invested brings back 9.",
+      aisha: "Exceptional service, 24/7 responsive team. Our firm is now the digital reference in our sector.",
+    },
+    portfolio: {
+      badge: "Our Work", title: "Results, Not Promises", subtitle: "Every project is proof of our expertise. Discover how we transformed our clients' digital presence.",
+      objectiveLabel: "Objective", resultLabel: "Result",
+      ctaTitle: "Your Project Will Be Next", ctaSubtitle: "Join our satisfied clients and transform your business.", ctaButton: "Start my project",
+      sector: { restaurant: "Restaurant", luxury: "Luxury & Fashion", legal: "Law Firm" },
+      case1: { objective: "Become the most visible restaurant in Paris 6th on Google Maps and double online reservations.", result: "Top 1 Google Maps in 4 months, 240% more calls, 180% more reservations." },
+      case2: { objective: "Multiply organic traffic and generate qualified B2B leads without ad budget.", result: "520% traffic in 8 months, 340% qualified leads, 890% ROI over 12 months." },
+      case3: { objective: "Reposition the brand on the digital luxury segment and multiply e-commerce sales.", result: "Brand awareness +300%, e-commerce conversion +210%, revenue +450% in one year." },
+      case4: { objective: "Dominate local search to attract new clients without paid advertising.", result: "Google visibility +600%, 45 new clients/month, Top 3 Google Maps in 5 months." },
+      metric: { calls: "Calls", reservations: "Reservations", traffic: "Traffic", leads: "Leads", brand: "Awareness", conversion: "Conversion", revenue: "Revenue", visibility: "Visibility", clients: "New clients" },
+    },
+    footer: { slogan: "World-class digital innovation.", services: "Services", company: "Company", legal: "Legal", rights: "All rights reserved.", privacy: "Privacy", terms: "Terms", mentions: "Legal notice", locations: "Paris · New York · London · Tokyo" },
   },
   es: {
     sas: { diagnostic: "Diagnóstico Interactivo", process: "Nuestra Metodología", transformation: "La Transformación", pricing: "Nuestros Planes", boost: "Potencia Tus Resultados", whyUs: "Por Qué Nosotros", back: "Atrás", next: "Siguiente", seeResult: "Ver resultado", bestChoice: "Mejor opción", choose: "Elegir", discover: "Descubrir", bundleHint: "La mayoría de nuestros clientes combinan varios servicios para un ROI óptimo.", seeBundles: "Ver nuestros Packs (-20%)", month: "mes", year: "año" },
@@ -241,11 +316,12 @@ export const translations: Record<Language, any> = {
       audit: "Auditoría Gratis",
     },
     hero: {
-      title: "Agencia de Innovación",
-      titleHighlight: "Digital",
+      title: "Agencia de Innovación", titleHighlight: "Digital",
       subtitle: "Construyendo el futuro del desarrollo web, SEO y Asistentes IA con tecnología de vanguardia y excelencia creativa.",
-      cta: "Iniciar mi proyecto",
-      ctaSecondary: "Auditoría gratis",
+      cta: "Iniciar mi proyecto", ctaSecondary: "Auditoría gratis",
+      hook1: "Si no eres visible, tus clientes están con la competencia.",
+      hook2: "Te colocamos donde ellos buscan.",
+      ctaPotential: "Ver mi potencial", ctaCreate: "Crear mi sitio",
     },
     services: {
       title: "Nuestras Soluciones",
@@ -256,7 +332,7 @@ export const translations: Record<Language, any> = {
       ai: { name: "IA y Automatización", tagline: "Sala de Control IA", description: "Chatbots inteligentes, automatización de procesos, asistentes IA personalizados para tu negocio." },
       maps: { name: "Google Maps", tagline: "Dominación Local", description: "Top 3 del Pack Local de Google Maps. 3x más llamadas, 5x más visitas a la tienda." },
     },
-    proof: { title: "Resultados Medibles", subtitle: "Números que hablan por sí mismos.", clients: "Clientes Satisfechos", projects: "Proyectos Entregados", countries: "Países Cubiertos", roi: "ROI Promedio" },
+    
     why: {
       title: "Por Qué XRAGENCY",
       subtitle: "Lo que nos diferencia de las agencias tradicionales.",
@@ -267,7 +343,8 @@ export const translations: Record<Language, any> = {
         { title: "Lujo Accesible", desc: "Calidad premium a precios competitivos gracias a la optimización IA." },
       ],
     },
-    cta: { title: "¿Listo para Dominar Tu Mercado?", subtitle: "Únete a las empresas que eligieron la excelencia digital.", button: "Empezar ahora", buttonSecondary: "Agendar una llamada" },
+    cta: { title: "¿Listo para Dominar Tu Mercado?", subtitle: "Únete a las empresas que eligieron la excelencia digital.", button: "Empezar ahora", buttonSecondary: "Agendar una llamada", buttonWhatsapp: "Hablar con un experto" },
+    proof: { title: "Resultados Medibles", subtitle: "Números que hablan por sí mismos.", clients: "Clientes Satisfechos", projects: "Proyectos Entregados", countries: "Países Cubiertos", roi: "ROI Promedio", testimonialsTitle: "Lo Que Dicen Nuestros Clientes" },
     footer: { slogan: "Innovación digital de clase mundial.", services: "Servicios", company: "Empresa", legal: "Legal", rights: "Todos los derechos reservados.", privacy: "Privacidad", terms: "Términos", mentions: "Aviso legal", locations: "Paris · New York · London · Tokyo" },
   },
   vn: {

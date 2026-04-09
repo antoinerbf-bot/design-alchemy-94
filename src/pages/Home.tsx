@@ -2,37 +2,28 @@ import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { ArrowRight, Globe, Zap, Shield, Sparkles, Code, Search, Palette, Bot, MapPin, TrendingUp, Users, FolderKanban, BarChart3 } from "lucide-react";
+import { ArrowRight, Sparkles, Code, Search, Palette, Bot, MapPin } from "lucide-react";
+import StorytellingSection from "@/components/home/StorytellingSection";
+import ProofSection from "@/components/home/ProofSection";
+import SmartConfigurator from "@/components/common/SmartConfigurator";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0 },
 };
-
 const stagger = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12 } },
 };
 
-function AnimatedCounter({ value, suffix = "" }: { value: number; suffix?: string }) {
-  return (
-    <motion.span
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-    >
-      <motion.span
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-      >
-        {value.toLocaleString()}
-      </motion.span>
-      {suffix}
-    </motion.span>
-  );
-}
+const services = [
+  { key: "webDesign", icon: Code, path: "/services/web-design", gradient: "from-blue-500 to-cyan-400" },
+  { key: "seo", icon: Search, path: "/services/seo", gradient: "from-emerald-500 to-teal-400" },
+  { key: "branding", icon: Palette, path: "/services/branding", gradient: "from-pink-500 to-rose-400" },
+  { key: "ai", icon: Bot, path: "/services/ai-automation", gradient: "from-violet-500 to-purple-400" },
+  { key: "maps", icon: MapPin, path: "/services/google-maps", gradient: "from-amber-500 to-orange-400" },
+];
 
 export default function Home() {
   const { t } = useLanguage();
@@ -44,48 +35,22 @@ export default function Home() {
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 200]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  const services = [
-    { key: "webDesign", icon: Code, path: "/services/web-design", gradient: "from-blue-500 to-cyan-400" },
-    { key: "seo", icon: Search, path: "/services/seo", gradient: "from-emerald-500 to-teal-400" },
-    { key: "branding", icon: Palette, path: "/services/branding", gradient: "from-pink-500 to-rose-400" },
-    { key: "ai", icon: Bot, path: "/services/ai-automation", gradient: "from-violet-500 to-purple-400" },
-    { key: "maps", icon: MapPin, path: "/services/google-maps", gradient: "from-amber-500 to-orange-400" },
-  ];
-
-  const stats = [
-    { value: 250, suffix: "+", label: t("proof.clients"), icon: Users },
-    { value: 800, suffix: "+", label: t("proof.projects"), icon: FolderKanban },
-    { value: 32, suffix: "", label: t("proof.countries"), icon: Globe },
-    { value: 420, suffix: "%", label: t("proof.roi"), icon: BarChart3 },
-  ];
-
-  const whyPoints: Array<{ title: string; desc: string }> = t("why.points") as any;
-
   return (
     <>
-      {/* ═══════════ HERO ═══════════ */}
+      {/* ═══════════ HERO — VIDEO/PARALLAX ═══════════ */}
       <section ref={heroRef} className="relative flex min-h-screen items-center justify-center overflow-hidden">
         {/* Parallax BG */}
         <motion.div style={{ y: heroY }} className="parallax-layer">
-          <img
-            src={heroBg}
-            alt=""
-            className="h-full w-full object-cover"
-            width={1920}
-            height={1080}
-          />
-          <div className="absolute inset-0 bg-background/70" />
+          <img src={heroBg} alt="" className="h-full w-full object-cover" width={1920} height={1080} />
+          <div className="absolute inset-0 bg-background/75" />
         </motion.div>
 
-        {/* Floating orbs */}
+        {/* Depth orbs */}
         <div className="glow-orb -left-32 top-20 h-96 w-96 animate-pulse-glow bg-glow-blue" />
         <div className="glow-orb -right-32 bottom-20 h-80 w-80 animate-pulse-glow bg-glow-purple" style={{ animationDelay: "2s" }} />
 
         {/* Content */}
-        <motion.div
-          style={{ opacity: heroOpacity }}
-          className="relative z-10 px-6 text-center"
-        >
+        <motion.div style={{ opacity: heroOpacity }} className="relative z-10 px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
@@ -103,21 +68,24 @@ export default function Home() {
             </motion.p>
 
             <h1 className="mb-6 text-4xl font-extrabold leading-tight tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-              {t("hero.title")}{" "}
-              <span className="gradient-text">{t("hero.titleHighlight")}</span>
+              {t("hero.hook1")}
             </h1>
 
-            <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+            <p className="mx-auto mb-4 max-w-2xl text-xl font-medium leading-relaxed text-primary sm:text-2xl">
+              {t("hero.hook2")}
+            </p>
+
+            <p className="mx-auto mb-10 max-w-2xl text-lg leading-relaxed text-muted-foreground">
               {t("hero.subtitle")}
             </p>
 
             <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-              <Link to="/contact" className="btn-primary-glow gap-2 text-base">
-                {t("hero.cta")}
+              <a href="#configurator" className="btn-primary-glow gap-2 text-base">
+                {t("hero.ctaPotential")}
                 <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link to="/pricing" className="btn-ghost-glow text-base">
-                {t("hero.ctaSecondary")}
+              </a>
+              <Link to="/contact" className="btn-ghost-glow text-base">
+                {t("hero.ctaCreate")}
               </Link>
             </div>
           </motion.div>
@@ -140,10 +108,12 @@ export default function Home() {
         </motion.div>
       </section>
 
+      {/* ═══════════ STORYTELLING ═══════════ */}
+      <StorytellingSection />
+
       {/* ═══════════ SERVICES ═══════════ */}
       <section className="section-padding relative overflow-hidden">
-        <div className="glow-orb -right-40 top-0 h-96 w-96 animate-pulse-glow bg-glow-purple" />
-
+        <div className="glow-orb -right-40 top-0 h-96 w-96 animate-pulse-glow bg-glow-purple" style={{ opacity: 0.06 }} />
         <div className="container-custom relative z-10">
           <motion.div
             initial="hidden"
@@ -152,16 +122,10 @@ export default function Home() {
             variants={stagger}
             className="mb-16 text-center"
           >
-            <motion.h2
-              variants={fadeUp}
-              className="mb-4 text-3xl font-bold text-foreground sm:text-5xl"
-            >
+            <motion.h2 variants={fadeUp} className="mb-4 text-3xl font-bold text-foreground sm:text-5xl">
               {t("services.title")}
             </motion.h2>
-            <motion.p
-              variants={fadeUp}
-              className="mx-auto max-w-2xl text-lg text-muted-foreground"
-            >
+            <motion.p variants={fadeUp} className="mx-auto max-w-2xl text-lg text-muted-foreground">
               {t("services.subtitle")}
             </motion.p>
           </motion.div>
@@ -182,19 +146,15 @@ export default function Home() {
                       <div className={`mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${service.gradient} shadow-lg`}>
                         <Icon className="h-7 w-7 text-foreground" />
                       </div>
-
                       <p className="mb-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
                         {t(`services.${service.key}.tagline`)}
                       </p>
-
                       <h3 className="mb-3 text-xl font-bold text-foreground">
                         {t(`services.${service.key}.name`)}
                       </h3>
-
                       <p className="mb-6 text-sm leading-relaxed text-muted-foreground">
                         {t(`services.${service.key}.description`)}
                       </p>
-
                       <span className="inline-flex items-center gap-2 text-sm font-medium text-primary transition-all group-hover:gap-3">
                         {t("hero.cta")}
                         <ArrowRight className="h-4 w-4" />
@@ -208,100 +168,16 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══════════ PROOF / STATS ═══════════ */}
-      <section className="relative overflow-hidden border-y border-border">
-        <div className="glow-orb left-1/3 top-1/2 h-64 w-64 -translate-y-1/2 animate-pulse-glow bg-glow-blue" />
+      {/* ═══════════ CONFIGURATEUR INTELLIGENT ═══════════ */}
+      <SmartConfigurator />
 
-        <div className="container-custom section-padding relative z-10">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={stagger}
-            className="mb-16 text-center"
-          >
-            <motion.h2 variants={fadeUp} className="mb-4 text-3xl font-bold text-foreground sm:text-5xl">
-              {t("proof.title")}
-            </motion.h2>
-            <motion.p variants={fadeUp} className="text-lg text-muted-foreground">
-              {t("proof.subtitle")}
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={stagger}
-            className="grid grid-cols-2 gap-8 lg:grid-cols-4"
-          >
-            {stats.map((stat) => {
-              const Icon = stat.icon;
-              return (
-                <motion.div
-                  key={stat.label}
-                  variants={fadeUp}
-                  className="glass-card p-8 text-center"
-                >
-                  <Icon className="mx-auto mb-4 h-8 w-8 text-primary" />
-                  <p className="mb-2 text-3xl font-extrabold text-foreground sm:text-4xl">
-                    <AnimatedCounter value={stat.value} suffix={stat.suffix} />
-                  </p>
-                  <p className="text-sm text-muted-foreground">{stat.label}</p>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* ═══════════ WHY XRAGENCY ═══════════ */}
-      <section className="section-padding relative overflow-hidden">
-        <div className="glow-orb -left-20 bottom-0 h-80 w-80 animate-pulse-glow bg-glow-purple" />
-
-        <div className="container-custom relative z-10">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={stagger}
-            className="mb-16 text-center"
-          >
-            <motion.h2 variants={fadeUp} className="mb-4 text-3xl font-bold text-foreground sm:text-5xl">
-              {t("why.title")}
-            </motion.h2>
-            <motion.p variants={fadeUp} className="mx-auto max-w-2xl text-lg text-muted-foreground">
-              {t("why.subtitle")}
-            </motion.p>
-          </motion.div>
-
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={stagger}
-            className="grid grid-cols-1 gap-6 md:grid-cols-2"
-          >
-            {[Zap, Bot, TrendingUp, Shield].map((Icon, i) => (
-              <motion.div key={i} variants={fadeUp} className="glass-card-hover p-8">
-                <Icon className="mb-4 h-10 w-10 text-primary" />
-                <h3 className="mb-2 text-xl font-bold text-foreground">
-                  {whyPoints[i]?.title}
-                </h3>
-                <p className="text-muted-foreground">
-                  {whyPoints[i]?.desc}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      {/* ═══════════ PREUVES ═══════════ */}
+      <ProofSection />
 
       {/* ═══════════ FINAL CTA ═══════════ */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-background via-primary/5 to-background" />
-        <div className="glow-orb left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 animate-pulse-glow bg-glow-blue" />
-
+        <div className="glow-orb left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 animate-pulse-glow bg-glow-blue" style={{ opacity: 0.08 }} />
         <div className="container-custom relative z-10 py-32 text-center md:py-48">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -320,9 +196,14 @@ export default function Home() {
                 {t("cta.button")}
                 <ArrowRight className="h-5 w-5" />
               </Link>
-              <Link to="/contact" className="btn-ghost-glow text-lg">
-                {t("cta.buttonSecondary")}
-              </Link>
+              <a
+                href="https://wa.me/33600000000?text=Je%20veux%20plus%20de%20clients"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost-glow text-lg"
+              >
+                {t("cta.buttonWhatsapp")}
+              </a>
             </div>
           </motion.div>
         </div>
