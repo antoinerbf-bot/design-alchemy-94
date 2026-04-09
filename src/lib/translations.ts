@@ -344,7 +344,8 @@ export const translations: Record<Language, any> = {
         { title: "Lujo Accesible", desc: "Calidad premium a precios competitivos gracias a la optimización IA." },
       ],
     },
-    cta: { title: "¿Listo para Dominar Tu Mercado?", subtitle: "Únete a las empresas que eligieron la excelencia digital.", button: "Empezar ahora", buttonSecondary: "Agendar una llamada" },
+    cta: { title: "¿Listo para Dominar Tu Mercado?", subtitle: "Únete a las empresas que eligieron la excelencia digital.", button: "Empezar ahora", buttonSecondary: "Agendar una llamada", buttonWhatsapp: "Hablar con un experto" },
+    proof: { title: "Resultados Medibles", subtitle: "Números que hablan por sí mismos.", clients: "Clientes Satisfechos", projects: "Proyectos Entregados", countries: "Países Cubiertos", roi: "ROI Promedio", testimonialsTitle: "Lo Que Dicen Nuestros Clientes" },
     footer: { slogan: "Innovación digital de clase mundial.", services: "Servicios", company: "Empresa", legal: "Legal", rights: "Todos los derechos reservados.", privacy: "Privacidad", terms: "Términos", mentions: "Aviso legal", locations: "Paris · New York · London · Tokyo" },
   },
   vn: {
