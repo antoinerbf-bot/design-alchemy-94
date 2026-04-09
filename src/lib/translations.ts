@@ -20,9 +20,17 @@ export const languageFlags: Record<Language, string> = {
 
 export const isRTL = (lang: Language) => lang === "ar";
 
-// Deep nested accessor
+// Deep nested accessor with EN fallback
 export function getTranslation(obj: any, path: string): string {
-  return path.split(".").reduce((acc, key) => acc?.[key], obj) ?? path;
+  const result = path.split(".").reduce((acc, key) => acc?.[key], obj);
+  if (result !== undefined && result !== null) return result;
+  // Fallback to EN
+  const enResult = path.split(".").reduce((acc, key) => acc?.[key], translations?.en);
+  if (enResult !== undefined && enResult !== null) return enResult;
+  // Fallback to FR
+  const frResult = path.split(".").reduce((acc, key) => acc?.[key], translations?.fr);
+  if (frResult !== undefined && frResult !== null) return frResult;
+  return path;
 }
 
 export const translations: Record<Language, any> = {
