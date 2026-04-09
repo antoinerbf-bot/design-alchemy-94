@@ -333,7 +333,7 @@ export const translations: Record<Language, any> = {
       ai: { name: "IA y Automatización", tagline: "Sala de Control IA", description: "Chatbots inteligentes, automatización de procesos, asistentes IA personalizados para tu negocio." },
       maps: { name: "Google Maps", tagline: "Dominación Local", description: "Top 3 del Pack Local de Google Maps. 3x más llamadas, 5x más visitas a la tienda." },
     },
-    proof: { title: "Resultados Medibles", subtitle: "Números que hablan por sí mismos.", clients: "Clientes Satisfechos", projects: "Proyectos Entregados", countries: "Países Cubiertos", roi: "ROI Promedio" },
+    
     why: {
       title: "Por Qué XRAGENCY",
       subtitle: "Lo que nos diferencia de las agencias tradicionales.",
