@@ -295,27 +295,6 @@ export const translations: Record<Language, any> = {
     },
     footer: { slogan: "World-class digital innovation.", services: "Services", company: "Company", legal: "Legal", rights: "All rights reserved.", privacy: "Privacy", terms: "Terms", mentions: "Legal notice", locations: "Paris · New York · London · Tokyo" },
   },
-        { title: "Accessible Luxury", desc: "Premium quality at competitive prices thanks to AI optimization." },
-      ],
-    },
-    cta: {
-      title: "Ready to Dominate Your Market?",
-      subtitle: "Join the businesses that chose digital excellence.",
-      button: "Start now",
-      buttonSecondary: "Schedule a call",
-    },
-    footer: {
-      slogan: "World-class digital innovation.",
-      services: "Services",
-      company: "Company",
-      legal: "Legal",
-      rights: "All rights reserved.",
-      privacy: "Privacy",
-      terms: "Terms",
-      mentions: "Legal notice",
-      locations: "Paris · New York · London · Tokyo",
-    },
-  },
   es: {
     sas: { diagnostic: "Diagnóstico Interactivo", process: "Nuestra Metodología", transformation: "La Transformación", pricing: "Nuestros Planes", boost: "Potencia Tus Resultados", whyUs: "Por Qué Nosotros", back: "Atrás", next: "Siguiente", seeResult: "Ver resultado", bestChoice: "Mejor opción", choose: "Elegir", discover: "Descubrir", bundleHint: "La mayoría de nuestros clientes combinan varios servicios para un ROI óptimo.", seeBundles: "Ver nuestros Packs (-20%)", month: "mes", year: "año" },
     nav: {
