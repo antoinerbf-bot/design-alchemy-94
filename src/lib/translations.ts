@@ -323,7 +323,6 @@ export const translations: Record<Language, any> = {
       hook2: "Te colocamos donde ellos buscan.",
       ctaPotential: "Ver mi potencial", ctaCreate: "Crear mi sitio",
     },
-    },
     services: {
       title: "Nuestras Soluciones",
       subtitle: "Cada servicio es un universo inmersivo diseñado para dominar tu mercado.",
