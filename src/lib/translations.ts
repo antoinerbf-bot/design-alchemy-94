@@ -316,11 +316,13 @@ export const translations: Record<Language, any> = {
       audit: "Auditoría Gratis",
     },
     hero: {
-      title: "Agencia de Innovación",
-      titleHighlight: "Digital",
+      title: "Agencia de Innovación", titleHighlight: "Digital",
       subtitle: "Construyendo el futuro del desarrollo web, SEO y Asistentes IA con tecnología de vanguardia y excelencia creativa.",
-      cta: "Iniciar mi proyecto",
-      ctaSecondary: "Auditoría gratis",
+      cta: "Iniciar mi proyecto", ctaSecondary: "Auditoría gratis",
+      hook1: "Si no eres visible, tus clientes están con la competencia.",
+      hook2: "Te colocamos donde ellos buscan.",
+      ctaPotential: "Ver mi potencial", ctaCreate: "Crear mi sitio",
+    },
     },
     services: {
       title: "Nuestras Soluciones",
