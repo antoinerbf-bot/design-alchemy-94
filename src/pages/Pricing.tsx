@@ -307,7 +307,7 @@ export default function Pricing() {
                 <button
                   onClick={async () => {
                     try {
-                      const response = await fetch("https://xrserver.netlify.app/api/create-checkout-session", {
+                      const response = await fetch("https://server-for-xragency.vercel.app/api/create-checkout-session", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
